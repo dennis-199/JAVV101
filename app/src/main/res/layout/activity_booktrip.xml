@@ -5,5 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Booktrip">
+    <TextView
+        android:id="@+id/pickup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Pickup Point:"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="40dp"/>
+
+    <TextView
+        android:id="@+id/destination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Destination:"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/pickup"
+        android:layout_marginLeft="40dp"/>
+
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="@id/pickup"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="180dp"
+        android:layout_marginRight="200dp"/>
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="@id/destination"
+        app:layout_constraintTop_toBottomOf="@id/spinner"
+        android:layout_marginLeft="180dp"
+        android:layout_marginRight="200dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

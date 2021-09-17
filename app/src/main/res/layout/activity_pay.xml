@@ -6,4 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".Pay">
 
+    <TextView
+        android:id="@+id/saccosname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="SACCOS NAME:"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="40dp"/>
+
+    <TextView
+        android:id="@+id/vehicle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="VEHICLE NO:"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/saccosname"
+        android:layout_marginLeft="40dp"/>
+
+
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="@id/saccosname"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="180dp"
+        android:layout_marginRight="200dp"/>
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="@id/vehicle"
+        app:layout_constraintTop_toBottomOf="@id/spinner3"
+        android:layout_marginLeft="180dp"
+        android:layout_marginRight="200dp"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
