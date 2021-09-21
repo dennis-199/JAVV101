@@ -2,6 +2,7 @@ package com.example.javv101;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -20,19 +21,30 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class Booktrip extends AppCompatActivity {
     ArrayList<String> destinations=new ArrayList<>();
     ArrayList<String> pickuppoints=new ArrayList<>();
+    ArrayList<String> buses=new ArrayList<>();
     private Button dateButton, timeButton, addbooking, proceedpay;
     private TextView dateTextView, timeTextView, pickup, destination;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseBorrow;
+    private String timeText;
+    private String dateText;
+    private String pickPoint;
+    private String dest;
+    private String busname;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +67,31 @@ public class Booktrip extends AppCompatActivity {
             }
         });
 
+        addbooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HashMap<String, String> bookTime = new HashMap<>();
+                bookTime.put("time", timeText);
+                bookTime.put("date", dateText);
+                bookTime.put("pickPoint", pickPoint);
+                bookTime.put("destination", dest);
+                bookTime.put("Bus_matatu", busname);
+
+                FirebaseDatabase
+                        .getInstance()
+                        .getReference("Booking")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .setValue(bookTime).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Booktrip.this, "Your booking was a success", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
+
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,23 +107,26 @@ public class Booktrip extends AppCompatActivity {
 
 
         //SPINNER
-        Spinner sp= (Spinner) findViewById(R.id.spinner);
+        Spinner pickup= (Spinner) findViewById(R.id.spinner);
         Spinner sp2=(Spinner) findViewById(R.id.spinner2);
+        Spinner bus=(Spinner) findViewById(R.id.busspinner);
 
         //FILL DATA
         fillData();
 
         //ADAPTR
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,destinations);
-        sp.setAdapter(adapter);
+        pickup.setAdapter(adapter);
         ArrayAdapter<String> adapter1=new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,pickuppoints);
         sp2.setAdapter(adapter1);
+        ArrayAdapter<String> adapter2=new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,buses);
+        bus.setAdapter(adapter2);
 
-        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        pickup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(Booktrip.this, destinations.get(i), Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(Booktrip.this, pickuppoints.get(i), Toast.LENGTH_SHORT).show();
+                pickPoint = pickuppoints.get(i);
             }
 
             @Override
@@ -97,7 +137,20 @@ public class Booktrip extends AppCompatActivity {
         sp2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(Booktrip.this, pickuppoints.get(i), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Booktrip.this, destinations.get(i), Toast.LENGTH_SHORT).show();
+                dest = destinations.get(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        bus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(Booktrip.this, buses.get(i), Toast.LENGTH_SHORT).show();
+                busname = buses.get(i);
             }
 
             @Override
@@ -119,9 +172,10 @@ public class Booktrip extends AppCompatActivity {
                 Log.i(TAG, "onTimeSet: " + hour + minute);
                 Calendar calendar1 = Calendar.getInstance();
                 calendar1.set(Calendar.HOUR, hour);
+                calendar1.set(Calendar.HOUR, hour);
                 calendar1.set(Calendar.MINUTE, minute);
-                String dateText = DateFormat.format("h:mm a", calendar1).toString();
-                timeTextView.setText(dateText);
+                timeText = DateFormat.format("h:mm a", calendar1).toString();
+                timeTextView.setText(timeText);
             }
         }, HOUR, MINUTE, is24HourFormat);
 
@@ -143,7 +197,7 @@ public class Booktrip extends AppCompatActivity {
                 calendar1.set(Calendar.YEAR, year);
                 calendar1.set(Calendar.MONTH, month);
                 calendar1.set(Calendar.DATE, date);
-                String dateText = DateFormat.format("EEEE, MMM d, yyyy", calendar1).toString();
+                dateText = DateFormat.format("EEEE, MMM d, yyyy", calendar1).toString();
 
                 dateTextView.setText(dateText);
             }
@@ -196,6 +250,12 @@ public class Booktrip extends AppCompatActivity {
         pickuppoints.add("Nyeri");
         pickuppoints.add("Machakos");
         pickuppoints.add("Kitui");
+
+        buses.add("Easycoach");
+        buses.add("Transline");
+        buses.add("Otange");
+        buses.add("Nyamira");
+        buses.add("Gurdian");
 
     }
 }

@@ -3,6 +3,26 @@ package com.example.javv101;
 public class User {
     public String fullName, age, phoneNumber, email, gender;
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
     public User(){
 
     }

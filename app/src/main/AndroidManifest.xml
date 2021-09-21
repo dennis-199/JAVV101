@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JAVV101">
         <activity
+            android:name=".MpesaActivity"
+            android:exported="true" />
+        <activity
             android:name=".Payingdetails"
             android:exported="true" />
         <activity

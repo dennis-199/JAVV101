@@ -14,6 +14,7 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/JAVV101/app/src/main/res/layout/activity_driver.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/JAVV101/app/src/main/res/layout/activity_forgot_password.xml" value="0.22327898550724637" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/JAVV101/app/src/main/res/layout/activity_main.xml" value="0.21041666666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/JAVV101/app/src/main/res/layout/activity_mpesa.xml" value="0.16" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/JAVV101/app/src/main/res/layout/activity_pay.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/JAVV101/app/src/main/res/layout/activity_payingdetails.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/JAVV101/app/src/main/res/layout/activity_profile.xml" value="0.19322916666666667" />
@@ -21,6 +22,7 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/JAVV101/app/src/main/res/layout/activity_saccos.xml" value="0.2033514492753623" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/JAVV101/app/src/main/res/layout/activity_saccospage.xml" value="0.19972826086956522" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/JAVV101/app/src/main/res/layout/activity_viewbookings.xml" value="0.19610507246376813" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/JAVV101/app/src/main/res/layout/item.xml" value="0.11041666666666666" />
       </map>
     </option>
   </component>
