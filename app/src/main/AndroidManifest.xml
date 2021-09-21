@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JAVV101">
         <activity
+            android:name=".Payingdetails"
+            android:exported="true" />
+        <activity
+            android:name=".Saccospage"
+            android:exported="true" />
+        <activity
             android:name=".Saccos"
             android:exported="true" />
         <activity
