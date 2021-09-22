@@ -77,6 +77,7 @@ public class Booktrip extends AppCompatActivity {
                 bookTime.put("destination", dest);
                 bookTime.put("Bus_matatu", busname);
 
+
                 FirebaseDatabase
                         .getInstance()
                         .getReference("Booking")

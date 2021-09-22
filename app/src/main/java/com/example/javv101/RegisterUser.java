@@ -2,6 +2,7 @@ package com.example.javv101;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,11 +20,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
 
     private TextView banner, registerUser;
     private EditText editTextFullName, editTextPhoneNumber, editTextAge, editTextEmail, editTextGender, editTextPassword;
     private ProgressBar progressBar;
+
 
 
     private FirebaseAuth mAuth;
@@ -34,6 +38,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_register_user);
 
         mAuth = FirebaseAuth.getInstance();
+
 
         banner = (TextView) findViewById(R.id.banner);
         banner.setOnClickListener(this);
@@ -80,7 +85,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             return;
         }
         if (age.isEmpty()) {
-            editTextAge.setError("Age is required");
+            editTextAge.setError("Phonenumber is required");
             editTextAge.requestFocus();
             return;
         }
@@ -90,7 +95,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             return;
         }
         if (phoneNumber.isEmpty()) {
-            editTextPhoneNumber.setError("PhoneNumber is required");
+            editTextPhoneNumber.setError("Age is required");
             editTextPhoneNumber.requestFocus();
             return;
         }
@@ -132,6 +137,8 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                                         if (task1.isSuccessful()) {
                                             Toast.makeText(RegisterUser.this, "User has been registered succesfully!", Toast.LENGTH_LONG).show();
                                             progressBar.setVisibility(View.GONE);
+                                            Intent intent=new Intent(RegisterUser.this, MainActivity.class);
+                                            startActivity(intent);
 
 
                                         } else {

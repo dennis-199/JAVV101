@@ -44,7 +44,7 @@
         android:textColor="#ffffff"
         android:background="@color/white"
         android:textAlignment="center"
-        android:text="Payable Ks.2500.00"
+        android:text="Payable Ks.1.00"
         android:layout_marginTop="100dp"/>
 
     <Button

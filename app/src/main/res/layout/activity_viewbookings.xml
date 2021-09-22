@@ -7,7 +7,7 @@
     tools:context=".Viewbookings">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/bookingList"
+        android:id="@+id/userList2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
